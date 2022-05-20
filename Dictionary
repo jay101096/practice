@@ -1,0 +1,6 @@
+#Create a dict and take input from the user and return the meaning of he word from the dict
+print("Dictonary")
+dict1 = {"IDE" : "Editor to write a program", "Python" : "Coding", "Dict" : "To store key value pairs", "String" : "Characters or Alphabets "}
+print("Enter key from dict1: ")
+a = input()
+print(a, "means", dict1[a])
