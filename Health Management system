@@ -1,0 +1,178 @@
+# Exercise 5
+# The task is to create a "Health Management System." Suppose you are a fitness trainer and nutritionist. You have to deal
+# with three clients, i.e., (Harry, Rohan, Hammad). For each client, you have to design their exercise and diet plan.
+# Instructions:
+# Create a food log file for each client
+# Create an exercise log file for each client.
+# Ask the user whether they want to log or retrieve client data.
+# Write a function that takes the user input of the client's name. After the client's name is entered, it will display a
+# message as "What you want to log- Diet or Exercise".
+# Use function
+
+
+def getdate():
+    import datetime
+    return datetime.datetime.now()
+
+def log():
+    print("Select your client: \n")
+    choice = int(input("1. Harry\n2. Rohan\n3. Hammad\n"))
+    if choice == 1:
+        while True:
+            print("What do you want log for Harry?\n")
+            b = int(input("1. Diet\n2. Exercise\n"))
+            if b == 1:
+                j = open("Harry_Diet_1.txt", "a")
+                data = input("What Harry ate?\n")
+                time = str(getdate())
+                j.write("["+ time +"]" + data + "\n")
+                j.close()
+                print("Item added successfully")
+
+            elif b == 2:
+                j = open("Harry_Exercise_1.txt", "a")
+                data = input("Exercise Name: ?\n")
+                time = str(getdate())
+                j.write("[" + time + "]" + data + "\n")
+                j.close()
+                print("Exercise added successfully")
+
+            else:
+                print("Please select the valid option")
+            c = int(input("Do you want to log more for Harry?\n1. Yes\n2. No\n"))
+            if c == 1:
+                continue
+            else:
+                break
+
+    elif choice == 2:
+        while True:
+            print("What do you want log for Rohan?\n")
+            b = int(input("1. Diet\n2. Exercise\n"))
+            if b == 1:
+                j = open("Rohan_Diet_1.txt", "a")
+                data = input("What Rohan ate?\n")
+                time = str(getdate())
+                j.write("["+ time +"]" + data + "\n")
+                j.close()
+                print("Item added successfully")
+
+            elif b == 2:
+                j = open("Rohan_Exercise_1.txt", "a")
+                data = input("Exercise Name: ?\n")
+                time = str(getdate())
+                j.write("[" + time + "]" + data + "\n")
+                j.close()
+                print("Exercise added successfully")
+
+            else:
+                print("Please select the valid option")
+            c = int(input("Do you want to log more for Rohan?\n1. Yes\n2. No\n"))
+            if c == 1:
+                continue
+            else:
+                break
+
+    elif choice == 3:
+        while True:
+            print("What do you want log for Hammad?\n")
+            b = int(input("1. Diet\n2. Exercise\n"))
+            if b == 1:
+                j = open("Hammad_Diet_1.txt", "a")
+                data = input("What Hammad ate?\n")
+                time = str(getdate())
+                j.write("["+ time +"]" + data + "\n")
+                j.close()
+                print("Item added successfully")
+
+            elif b == 2:
+                j = open("Hammad_Exercise_1.txt", "a")
+                data = input("Exercise Name: ?\n")
+                time = str(getdate())
+                j.write("[" + time + "]" + data + "\n")
+                j.close()
+                print("Exercise added successfully")
+
+            else:
+                print("Please select the valid option")
+            c = int(input("Do you want to log more for Harry?\n1. Yes\n2. No\n"))
+            if c == 1:
+                continue
+            else:
+                break
+
+    else:
+        print("Please select the valid client")
+
+def retrive():
+    while True:
+        print("Whose data you want to retrive?\n")
+        client = int(input("1. Harry\n2. Rohan\n3. Hammad\n"))
+        if client == 1:
+            print("What do you want to retrive for Harry?\n")
+            choice = int(input("1. Diet\n2. Exercise\n"))
+            if choice == 1:
+                r = open("Harry_Diet_1.txt")
+                print(r.readlines())
+                r.close()
+            elif choice == 2:
+                r = open("Harry_Exercise_1.txt")
+                print(r.readlines())
+                r.close()
+            else:
+                print("Please select a valid option")
+
+        elif client == 2:
+            print("What do you want to retrive for Rohan?\n")
+            choice = int(input("1. Diet\n2. Exercise\n"))
+            if choice == 1:
+                r = open("Rohan_Diet_1.txt")
+                print(r.readlines())
+                r.close()
+            elif choice == 2:
+                r = open("Rohan_Exercise_1.txt")
+                print(r.readlines())
+                r.close()
+            else:
+                print("Please select a valid option")
+
+        elif client == 3:
+            print("What do you want to retrive for Hammad?\n")
+            choice = int(input("1. Diet\n2. Exercise\n"))
+            if choice == 1:
+                r = open("Hammad_Diet_1.txt")
+                print(r.readlines())
+                r.close()
+            elif choice == 2:
+                r = open("Hammad_Exercise_1.txt")
+                print(r.readlines())
+                r.close()
+            else:
+                print("Please select a valid option")
+
+        else:
+            print("Please select a valid client")
+
+
+        c = int(input("Do you want to retrive any more details?\n1. Yes\n2. No\n"))
+        if c == 1:
+            continue
+        elif c == 2:
+            break
+        else:
+            print("Select Yes or No")
+            break
+
+
+
+print("Welcome to Health management system")
+print("What do you want to do?\n")
+choice = int(input("1. Log\n2. Retrive\n"))
+if choice == 1:
+    log()
+
+elif choice == 2:
+    retrive()
+
+else:
+    print("Wrong input!!! Please try again")
