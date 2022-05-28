@@ -1,0 +1,74 @@
+#Exercise 6: Game Development: Snake Water Gun
+# Result
+# Snake vs. Water: Snake drinks the water hence wins.
+# Water vs. Gun: The gun will drown in water, hence a point for water
+# Gun vs. Snake: Gun will kill the snake and win.
+# In situations where both players choose the same object, the result will be a draw.
+# Instructions
+# Snake vs. Water: Snake drinks the water hence wins.
+# Water vs. Gun: The gun will drown in water, hence a point for water
+# Gun vs. Snake: Gun will kill the snake and win.
+# In situations where both players choose the same object, the result will be a draw.
+
+
+import random
+user_score = 0
+computer_score = 0
+play_count = 0
+print("Let's play Snake, Water and Gun.......")
+options = ["s", "w", "g"]
+while True:
+    play_count += 1
+    computer_turn = random.choice(options)
+    user_turn = input("Please select from below options\n 's' for snake\n 'w' for water\n 'g' for gun\n")
+    if user_turn == "s" or user_turn == "S":
+        if computer_turn == "s":
+            print("Ohh!!! It's a Tie....")
+        elif computer_turn == "w":
+            user_score += 1
+            print("You win....Your snake drunk my water")
+        else:
+            computer_score +=1
+            print("You loose...Your Snake died")
+    elif user_turn == "w" or user_turn == "W":
+        if computer_turn == "s":
+            computer_score += 1
+            print("You loose.... My Snake drinks the water")
+        elif computer_turn == "w":
+            print("Ohh!!! It's a Tie....")
+        else:
+            user_score += 1
+            print("You win....My Gun drown in water")
+    elif user_turn == "g" or user_turn == "G":
+        if computer_turn == "s":
+            user_score += 1
+            print("You win.....My Snake died")
+        elif computer_turn == "w":
+            computer_score += 1
+            print("You loose..... Your Gun drown in water")
+        else:
+            print("Ohh!!! It's a Tie....")
+    else:
+        print("Wrong input..! Try entering from the given options")
+    if play_count == 10:
+        break
+
+print("*" * 10, "Final Score", "*" * 10)
+if computer_score > user_score:
+    print("You are loser... I won the Game")
+    print("User score is: " + str(user_score) + "\nComputer score is: " + str(computer_score))
+elif computer_score < user_score:
+    print("Winner Winner Chicken Dinner....You won the Game")
+    print("UserScore is: " + str(user_score) + "\nComputer score is: " + str(computer_score))
+else:
+    print("Ohh!!!!!! It's a Tie ")
+    print("UserScore is: " + str(user_score) + "\nComputer score is: " + str(computer_score))
+
+a = int(input("Do you want to play again\n1. Yes\n2. No\n"))
+
+if a == 1:
+    print("Please start the Game again")
+elif a == 2:
+    print("Thank You  for playing")
+else:
+    print("Please select a valid option")
