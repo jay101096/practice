@@ -1,23 +1,38 @@
-#Astrologer's stars
-#Instructions:
+# print a pattern similar to that of  a right-angle triangle
+#
 # You have to take an integer type variable, and the input of the variable will define the length of the triangle.
 # You have to declare another Boolean variable.
+# *
+# **
+# ***
+# ****
+# *****
 # When the value of Boolean is 1 i.e. True, the pattern will be printed as shown above.
 # But if the value of Boolean is 0 or false, then the triangle will be printed upside down.
 
-print("Enter a number ")
-n = int(input())
-print("type 1 or 0")
-m = int(input())
-bol = bool(m)
-if bol == True:
-    for i in range(0, n):
-        for j in range(0, i + 1):
-            print( "*", end = "")
-        print("\n", end = "")
+print("Welcome to triangle printing game")
 
-elif bol == False:
-    for k in range(n, 0, -1):
-        for l in range(1, k + 1):
+def straight_triangle():
+        print("Enter the number of rows for the triangle")
+        n = int(input())
+        for i in range(0, n):
+            for j in range(0, i + 1):
+                print("*", end = "")
+            print("\n", end = "")
+
+def reverse_triangle():
+    print("Enter the number of rows for the triangle:")
+    n = int(input())
+    for i in range(n, 0, -1):
+        for j in range(1, i + 1):
             print("*", end = "")
         print("\n", end = "")
+
+if __name__ == "__main__":
+    print("Type 1 or 0 for the triangle:")
+    a = int(input())
+    b = bool(a)
+    if b == True:
+        straight_triangle()
+    else:
+        reverse_triangle()
