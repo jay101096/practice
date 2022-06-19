@@ -1,0 +1,63 @@
+# Healthy Programmer
+# 9am - 5pm
+# Water - water.mp3 (3.5 litres) - Drank - log
+# Eyes - eyes.mp3 - every 30 min - EyDone - log
+# Physical activity - physical.mp3 every - 45 min - ExDone - log
+#
+# Rules
+# Pygame module to play audio
+
+from pygame import mixer
+from datetime import datetime
+from time import time
+
+def music_on(file, stopper):
+    mixer.init()
+    mixer.music.load(file)
+    mixer.music.play()
+    while True:
+        user = input()
+        if user == stopper:
+            mixer.music.stop()
+            break
+
+def log_msg(msg):
+    with open("mylogs.txt", "a") as f:
+        f.write(f"{msg} {datetime.now()}\n")
+
+if __name__ == '__main__':
+    init_water = time()
+    init_eyes = time()
+    init_exercise = time()
+    water_secs = 10
+    eyes_secs = 15
+    physical_secs = 20
+    total_water = 0
+    total_eyes_ex = 0
+    total_phy_ex = 0
+
+    while True:
+        if time() - init_water > water_secs:
+            print("Water drinking time. Enter 'drank' to stop.")
+            music_on("water.mp3", "drank")
+            init_water = time()
+            log_msg("Drank water at ")
+            total_water += 1
+
+        if time() - init_eyes > eyes_secs:
+            print("Eye exercise time. Enter 'doneeyes' to stop.")
+            music_on("eyes.mp3", "doneeyes")
+            init_eyes = time()
+            log_msg("Eyes relaxed at ")
+            total_eyes_ex += 1
+
+        if time() - init_exercise > physical_secs:
+            print("Physical activity time. Enter 'donephy' to stop.")
+            music_on("physical.mp3", "donephy")
+            init_exercise = time()
+            log_msg("Physical activity done at ")
+            total_phy_ex += 1
+
+        if total_water == 5 and total_eyes_ex == 4 and total_phy_ex == 3:
+            print("Your shift has ended.")
+            break
